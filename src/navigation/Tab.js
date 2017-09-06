@@ -15,9 +15,10 @@ const Tab = TabNavigator({
     swipeEnabled: true,
     animationEnabled: true,
     tabBarOptions: {
-            activeTintColor: '#e91e63',
-
+        activeTintColor: '#000000',
+        showLabel: false
     },
+
 });
 
 export default Tab;

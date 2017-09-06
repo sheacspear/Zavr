@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, Image} from 'react-native';
+import {View, StyleSheet, Text, Image} from 'react-native';
 
 export default class FeedScreen extends React.Component {
     static navigationOptions = {
@@ -8,7 +8,7 @@ export default class FeedScreen extends React.Component {
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
             <Image
-                source={require('./../assets/icons/icons8-Caterpillar-48.png')}
+                source={require('./../assets/icons/ic_bug_report_black_24dp.png')}
                 style={[styles.icon, {tintColor: tintColor}]}
             />
         ),
@@ -16,11 +16,11 @@ export default class FeedScreen extends React.Component {
 
     render() {
         return (
-            <ScrollView style={styles.container}>
+            <View style={styles.container}>
                 <Text>
                     Feed
                 </Text>
-            </ScrollView>
+            </View>
         );
     }
 }

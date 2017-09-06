@@ -14,13 +14,13 @@ import {MonoText} from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
-        title: "Home",
+        //title: "Home",
         header: null,
-        tabBarLabel: 'Home',
+        //tabBarLabel: 'Home',
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
             <Image
-                source={require('./../assets/icons/icons8-Caterpillar-48.png')}
+                source={require('./../assets/icons/ic_home_black_24dp.png')}
                 style={[styles.icon, {tintColor: tintColor}]}
             />
         ),
