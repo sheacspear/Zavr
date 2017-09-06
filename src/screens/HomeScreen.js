@@ -11,8 +11,12 @@ import {
     Alert,
     TouchableHighlight
 } from 'react-native';
+import {TabNavigator, TabBarBottom} from 'react-navigation';
 
-import {MonoText} from '../components/StyledText';
+import {SetMenu} from '../components/SetMenu/index';
+import {DiaryFood} from '../components/DiaryFood/index';
+import {Statistic} from '../components/Statistic/index';
+import PetInfo from "../components/PetInfo/index";
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -30,14 +34,40 @@ export default class HomeScreen extends React.Component {
 
     render() {
         const {navigate} = this.props.navigation;
+
+        const InnerTabs = TabNavigator({
+            SetMenu: {screen: SetMenu},
+            FoodDiary: {screen: DiaryFood},
+            Statistic: {screen: Statistic},
+        }, {
+            swipeEnabled: true,
+            animationEnabled: true,
+            tabBarPosition: "top",
+            tabBarOptions: {
+                activeTintColor: '#000000',
+                showLabel: false,
+                showIcon: true,
+                labelStyle: {
+                    fontSize: 12,
+                },
+                tabStyle: {
+                    width: 100,
+                },
+                style: {
+                    backgroundColor: '#FFFFFF',
+                }
+            },
+        });
+
+
         return (
             <View style={styles.container}>
                 <View style={[styles.titleInfo, {flex: 1, flexDirection: 'row',}]}>
                     <View style={{flex: 10, alignItems: 'center'}}>
-                        <Text>MyZavr</Text>
+                        <Text> MyZavr </Text>
                     </View>
                     <View style={{flex: 1, alignItems: 'center'}}>
-                        <TouchableOpacity  onPress={() => navigate('SettingScreen')}>
+                        <TouchableOpacity onPress={() => navigate('SettingScreen')}>
                             <Image
                                 source={require('./../assets/icons/ic_settings_white_24dp.png')}
                                 style={[styles.icon, {tintColor: '#000000'}]}
@@ -46,11 +76,10 @@ export default class HomeScreen extends React.Component {
                     </View>
                 </View>
                 <View style={styles.petInfo}>
-                    <Text> petInfo </Text>
-
+                    <PetInfo/>
                 </View>
                 <View style={styles.tabInfo}>
-                    <Text> tabInfo </Text>
+                    <InnerTabs style={{height: 5,}}/>
                 </View>
             </View>
         );
@@ -84,7 +113,7 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
     },
     petInfo: {
-        flex: 4,
+        flex: 2,
         alignItems: 'center',
         ...Platform.select({
             ios: {
@@ -113,8 +142,6 @@ const styles = StyleSheet.create({
             },
         }),
         alignItems: 'center',
-        //backgroundColor: '#fbfbfb',
-        paddingVertical: 20,
     },
     developmentModeText: {
         marginBottom: 20,
