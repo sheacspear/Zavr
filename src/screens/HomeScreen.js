@@ -8,6 +8,8 @@ import {
     Text,
     TouchableOpacity,
     View,
+    Alert,
+    TouchableHighlight
 } from 'react-native';
 
 import {MonoText} from '../components/StyledText';
@@ -18,7 +20,7 @@ export default class HomeScreen extends React.Component {
         header: null,
         //tabBarLabel: 'Home',
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-        tabBarIcon: ({ tintColor }) => (
+        tabBarIcon: ({tintColor}) => (
             <Image
                 source={require('./../assets/icons/ic_home_black_24dp.png')}
                 style={[styles.icon, {tintColor: tintColor}]}
@@ -30,107 +32,29 @@ export default class HomeScreen extends React.Component {
         const {navigate} = this.props.navigation;
         return (
             <View style={styles.container}>
-
-
-                <ScrollView
-                    style={styles.container}
-                    contentContainerStyle={styles.contentContainer}>
-                    <View style={styles.welcomeContainer}>
-                        <Text>
-                            Zavr
-                        </Text>
-                        <Image
-                            source={
-                                __DEV__
-                                    ? require('../assets/images/robot-dev.png')
-                                    : require('../assets/images/robot-prod.png')
-                            }
-                            style={styles.welcomeImage}
-                        />
+                <View style={[styles.titleInfo, {flex: 1, flexDirection: 'row',}]}>
+                    <View style={{flex: 10, alignItems: 'center'}}>
+                        <Text>MyZavr</Text>
                     </View>
-
-                    <View style={styles.getStartedContainer}>
-                        {this._maybeRenderDevelopmentModeWarning()}
-
-                        <Text style={styles.getStartedText}>Get started by opening</Text>
-
-                        <View
-                            style={[
-                                styles.codeHighlightContainer,
-                                styles.homeScreenFilename,
-                            ]}>
-                            <MonoText style={styles.codeHighlightText}>
-                                screens/HomeScreen.js
-                            </MonoText>
-                        </View>
-
-                        <Text style={styles.getStartedText}>
-                            Change this text and your app will automatically reload.
-                        </Text>
-                    </View>
-
-                    <View style={styles.helpContainer}>
-                        <TouchableOpacity
-                            onPress={this._handleHelpPress}
-                            style={styles.helpLink}>
-                            <Text style={styles.helpLinkText}>
-                                Help, it didn’t automatically reload!
-                            </Text>
+                    <View style={{flex: 1, alignItems: 'center'}}>
+                        <TouchableOpacity  onPress={() => navigate('SettingScreen')}>
+                            <Image
+                                source={require('./../assets/icons/ic_settings_white_24dp.png')}
+                                style={[styles.icon, {tintColor: '#000000'}]}
+                            />
                         </TouchableOpacity>
                     </View>
-                </ScrollView>
+                </View>
+                <View style={styles.petInfo}>
+                    <Text> petInfo </Text>
 
-                <View style={styles.tabBarInfoContainer}>
-                    <Button
-                        onPress={() => navigate('FeedScreen')}
-                        title="Links"
-                    />
-                    <Text style={styles.tabBarInfoText}>
-                        This is a tab bar. You can edit it in:
-                    </Text>
-
-                    <View
-                        style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-                        <MonoText style={styles.codeHighlightText}>
-                            navigation/MainTabNavigator.js
-                        </MonoText>
-                    </View>
+                </View>
+                <View style={styles.tabInfo}>
+                    <Text> tabInfo </Text>
                 </View>
             </View>
         );
     }
-
-    _maybeRenderDevelopmentModeWarning() {
-        if (__DEV__) {
-            const learnMoreButton = (
-                <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-                    Learn more
-                </Text>
-            );
-
-            return (
-                <Text style={styles.developmentModeText}>
-                    Development mode is enabled, your app will be slower but you can use
-                    useful development tools. {learnMoreButton}
-                </Text>
-            );
-        } else {
-            return (
-                <Text style={styles.developmentModeText}>
-                    You are not in development mode, your app will run at full speed.
-                </Text>
-            );
-        }
-    }
-
-
-    _handleLearnMorePress = () => {
-
-    };
-
-    _handleHelpPress = () => {
-
-    };
 }
 
 const styles = StyleSheet.create({
@@ -141,6 +65,56 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+    },
+    titleInfo: {
+        flex: 1,
+        alignItems: 'center',
+        ...Platform.select({
+            ios: {
+                shadowColor: 'black',
+                shadowOffset: {height: -3},
+                shadowOpacity: 0.1,
+                shadowRadius: 3,
+            },
+            android: {
+                elevation: 20,
+            },
+        }),
+        backgroundColor: '#FF5300',
+        paddingVertical: 20,
+    },
+    petInfo: {
+        flex: 4,
+        alignItems: 'center',
+        ...Platform.select({
+            ios: {
+                shadowColor: 'black',
+                shadowOffset: {height: -3},
+                shadowOpacity: 0.1,
+                shadowRadius: 3,
+            },
+            android: {
+                elevation: 20,
+            },
+        }),
+        paddingVertical: 20,
+    },
+    tabInfo: {
+        flex: 10,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'black',
+                shadowOffset: {height: -3},
+                shadowOpacity: 0.1,
+                shadowRadius: 3,
+            },
+            android: {
+                elevation: 20,
+            },
+        }),
+        alignItems: 'center',
+        //backgroundColor: '#fbfbfb',
+        paddingVertical: 20,
     },
     developmentModeText: {
         marginBottom: 20,
@@ -185,26 +159,7 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         textAlign: 'center',
     },
-    tabBarInfoContainer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: {height: -3},
-                shadowOpacity: 0.1,
-                shadowRadius: 3,
-            },
-            android: {
-                elevation: 20,
-            },
-        }),
-        alignItems: 'center',
-        backgroundColor: '#fbfbfb',
-        paddingVertical: 20,
-    },
+
     tabBarInfoText: {
         fontSize: 17,
         color: 'rgba(96,100,109, 1)',

@@ -7,7 +7,7 @@ import FeedScreen from '../screens/FeedScreen';
 import PetListScreen from '../screens/PetListScreen';
 
 
-const Tab = TabNavigator({
+const MainNavigatorTab = TabNavigator({
     Home: {screen: HomeScreen},
     Feed: {screen: FeedScreen},
     PetList: {screen: PetListScreen},
@@ -16,11 +16,12 @@ const Tab = TabNavigator({
     animationEnabled: true,
     tabBarOptions: {
         activeTintColor: '#000000',
-        showLabel: false
+        showLabel: false,
+        showIcon: true
     },
 
 });
 
-export default Tab;
+export default MainNavigatorTab;
 
 
