@@ -26,7 +26,7 @@ export default class HomeScreen extends React.Component {
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({tintColor}) => (
             <Image
-                source={require('./../assets/icons/ic_home_black_24dp.png')}
+                source={require('./../assets/icons/tab/home.png')}
                 style={[styles.icon, {tintColor: tintColor}]}
             />
         ),
@@ -44,7 +44,7 @@ export default class HomeScreen extends React.Component {
             animationEnabled: true,
             tabBarPosition: "top",
             tabBarOptions: {
-                activeTintColor: '#000000',
+                activeTintColor: '#2337c9',
                 showLabel: false,
                 showIcon: true,
                 labelStyle: {
@@ -62,19 +62,32 @@ export default class HomeScreen extends React.Component {
 
         return (
             <View style={styles.container}>
+
+                <View style={[{backgroundColor: '#ffa834', height: 25}]}>
+                </View>
+
                 <View style={[styles.titleInfo, {flex: 1, flexDirection: 'row',}]}>
-                    <View style={{flex: 10, alignItems: 'center'}}>
-                        <Text> MyZavr </Text>
+                    <View style={{flex: 1, alignItems: 'flex-start', width: 6}}>
                     </View>
-                    <View style={{flex: 1, alignItems: 'center'}}>
+                    <View style={{flex: 2, alignItems: 'flex-start', width: 50}}>
+                    </View>
+                    <View style={{flex: 6, alignItems: 'center'}}>
+                        <Text style={{fontWeight: 'bold',}}>My Leopold</Text>
+                    </View>
+
+                    <View style={{flex: 2, alignItems: 'flex-end', width: 50,}}>
                         <TouchableOpacity onPress={() => navigate('SettingScreen')}>
                             <Image
-                                source={require('./../assets/icons/ic_settings_white_24dp.png')}
+                                source={require('../assets/icons/App/settings.png')}
                                 style={[styles.icon, {tintColor: '#000000'}]}
                             />
                         </TouchableOpacity>
                     </View>
+                    <View style={{flex: 1, alignItems: 'flex-start', width: 6}}>
+                    </View>
                 </View>
+
+
                 <View style={styles.petInfo}>
                     <PetInfo/>
                 </View>
@@ -96,21 +109,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     titleInfo: {
-        flex: 1,
-        alignItems: 'center',
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: {height: -3},
-                shadowOpacity: 0.1,
-                shadowRadius: 3,
-            },
-            android: {
-                elevation: 20,
-            },
-        }),
-        backgroundColor: '#FF5300',
-        paddingVertical: 20,
+        backgroundColor: '#ffa834',
+
     },
     petInfo: {
         flex: 2,

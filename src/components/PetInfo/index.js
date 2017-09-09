@@ -6,9 +6,11 @@ export default class PetInfo extends React.Component {
 
     render() {
         return (
-            <View style={{flex: 1, flexDirection: 'row',}}>
+            <View style={{flex: 1, flexDirection: 'row',justifyContent: 'space-between'}}>
                 <View style={{flex: 2}}>
-                    <Text>Foto</Text>
+                    <Image style={styles.iconBig}
+                           source={require('./../../assets/icons/PetInfo/leo.png')}
+                    />
                 </View>
                 <View style={{flex: 3}}>
                     <View style={{flex: 1}}>
@@ -20,7 +22,7 @@ export default class PetInfo extends React.Component {
                                 style={{fontSize: 12, color: 'rgba(96,100,109, 1)'}}>Weight
                                 29 g</Text>
                             <Image style={styles.icon}
-                                   source={require('./../../assets/icons/ic_add_circle_outline_black_18dp.png')}
+                                   source={require('./../../assets/icons/PetInfo/plus.png')}
                             />
                         </View>
                         <View style={{flex: 2, alignItems: 'flex-end'}}>
@@ -41,5 +43,9 @@ const styles = StyleSheet.create({
     icon: {
         width: 18,
         height: 18,
+    },
+    iconBig: {
+        width: 54,
+        height: 54,
     }
 });

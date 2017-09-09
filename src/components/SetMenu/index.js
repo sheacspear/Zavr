@@ -8,11 +8,11 @@ export class SetMenu extends React.Component {
         tabBarLabel: 'SetMenu',
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({tintColor}) => (<View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-                <Text >SetMenu</Text>
                 <Image
-                    source={require('../../assets/icons/ic_bug_report_black_24dp.png')}
+                    source={require('../../assets/icons/HomeScreen/menu.png')}
                     style={[styles.icon, {tintColor: tintColor}]}
                 />
+                <Text style={{color: tintColor}}>SetMenu</Text>
             </View>
         ),
     };

@@ -8,7 +8,7 @@ export default class PetListScreen extends React.Component {
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
             <Image
-                source={require('./../assets/icons/ic_view_list_black_24dp.png')}
+                source={require('./../assets/icons/tab/list.png')}
                 style={[styles.icon, {tintColor: tintColor}]}
             />
         ),

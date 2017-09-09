@@ -8,11 +8,11 @@ export class Statistic extends React.Component {
         tabBarLabel: 'Statistic',
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({tintColor}) => (<View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-                <Text >Statistic</Text>
                 <Image
-                    source={require('../../assets/icons/ic_timeline_black_24dp.png')}
+                    source={require('../../assets/icons/HomeScreen/statistic.png')}
                     style={[styles.icon, {tintColor: tintColor}]}
                 />
+                <Text style={{color: tintColor}}>Statistic</Text>
             </View>
         ),
     };
