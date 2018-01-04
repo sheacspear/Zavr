@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "Your App Name",
+    "name": "Zavr",
     //"icon": "./path/to/your/app-icon.png",
     "version": "0.0.1",
-    "slug": "your-app-slug",
+    "slug": "Zavr",
     "sdkVersion": "23.0.0",
     "ios": {
-      "bundleIdentifier": "com.yourcompany.yourappname"
+      "bundleIdentifier": "ru.zavr"
     },
     "android": {
-      "package": "com.yourcompany.yourappname"
+      "package": "ru.zavr"
     }
   }
 }
